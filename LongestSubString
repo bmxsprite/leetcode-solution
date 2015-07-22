@@ -1,0 +1,17 @@
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        boolean[] charExistTable = new boolean [256];
+        int j = 0, maxlen = 0; 
+        // j pointer keeps track of the head of current longest substring
+        // i pointer keeps track of the tail of current longest substring
+        for (int i = 0; i < s.length(); i++){
+            while(charExistTable[s.charAt(i)]){
+                charExistTable[s.charAt(j)] = false;
+                j++;
+            }
+        charExistTable[s.charAt(i)] = true;
+        maxlen = Math.max(i-j+1, maxlen);   
+        }
+        return maxlen;
+    }
+}
